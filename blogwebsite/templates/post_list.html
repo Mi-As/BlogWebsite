@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} mirastonishing - All Blog Posts {% endblock title %}
+
+{% block content %}
+<style type="text/css">
+	.card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+{% for post in post_list %}
+    <div class="card-body">
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-text">{{ post.author }} | {{ post.created_on}} </p>
+        <p class="card-text">{{ post.description }} </p>
+        <a href="{% url 'post_detail' post.slug  %}">Read More</a>
+    </div>
+{% endfor %}
+
+{% endblock content %}

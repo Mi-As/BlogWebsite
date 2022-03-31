@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} {{ post.title }} {% endblock title %}
+
+{% block content %}
+<h1 id='test-blog-article'>{{ post.title }}</h1>
+<p style="font-family: monospace; font-size: medium;">{{ post.author }} | {{ post.created_on }}</p>
+<p>{{ post.content | safe }}</p>
+{% endblock content %}
