@@ -7,6 +7,14 @@ STATUS = (
 	(1,"Published")
 )
 
+LANGUAGE_CODE = (
+	("en","english"),
+	("de","deutsch"),
+	("pt","português"),
+	("es","español"),
+	("ru","русский")
+)
+
 class Post(models.Model):
 	slug = models.SlugField(max_length=200, unique=True)
 	author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
@@ -14,6 +22,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=200)
 	keywords = models.CharField(max_length=200) 	# Todo make keyword list!
+	language_code = models.CharField(max_length=2, choices=LANGUAGE_CODE, default="en")
 
 	created_on = models.DateTimeField(auto_now_add=True)
 	updated_on = models.DateTimeField(auto_now= True)
