@@ -11,7 +11,7 @@ LANGUAGE_CODE = (
 
 # creating a validator function
 def custom_slug_validator(value):
-    if value in ["blog", "admin"]:
+    if value in ["blog", "admin", ""]:
         raise ValidationError("This slug is not allowed!")
     else:
         return value
