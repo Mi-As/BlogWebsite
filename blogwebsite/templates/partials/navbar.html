@@ -1,0 +1,26 @@
+<html>
+<head>
+  {% load static %}
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar" id="myNavBar">
+	  <a class="navbar-brand" href="/">mirastonishing</a>
+	  <a class="navbar-item" href="/about">About</a>
+	  <a class="navbar-item" href="/blog">Blog</a>
+	  <a style="font-size:15px;" class="icon" onclick="menuBar()">&#9776;</a>
+	</div>
+	
+<script>
+function menuBar() {
+  var x = document.getElementById("myNavBar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -10,13 +10,7 @@
 
 <body class="typora-export">
 	
-	<!-- Navigation -->
-	<div class="navbar" id="myNavBar">
-	  <a class="navbar-brand" href="/">mirastonishing</a>
-	  <a class="navbar-item" href="/about">About</a>
-	  <a class="navbar-item" href="/blog">Blog</a>
-	  <a style="font-size:15px;" class="icon" onclick="menuBar()">&#9776;</a>
-	</div>
+	{% include "partials/navbar.html" %}
 
 	<div class='typora-export-content'>
 		<div id='write'  class=''>
@@ -28,15 +22,6 @@
 
 	<!-- Footer -->
 	<footer>coming soon</footer>
-<script>
-function menuBar() {
-  var x = document.getElementById("myNavBar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
-  } else {
-    x.className = "navbar";
-  }
-}
-</script>
+
 </body>
 </html>
