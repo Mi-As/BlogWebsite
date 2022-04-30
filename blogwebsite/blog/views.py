@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from .models import Post, Comment
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -18,3 +18,8 @@ class PostDetail(generic.DetailView):
             return'blog/post_detail.html'
 
         return 'page/404_page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        context["comment_list"] = Comment.objects.filter(post_slug=context["object"].slug).values()
+        return context

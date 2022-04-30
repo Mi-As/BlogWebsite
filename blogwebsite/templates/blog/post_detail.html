@@ -6,4 +6,28 @@
 <h1>{{ post.title }}</h1>
 <p class='post-data'>{{ post.author }} | {{ post.created_on }}</p>
 <p>{{ post.content | safe }}</p>
+<div class="comment-section">
+
+	<h3>{{ comment_list.count }} Comment{% if not comment_list.count == 1 %}s{% endif %} </h3>
+	<div class="comment-form">
+		<form>
+			<textarea class="comment-form-content" rows="3" placeholder="Type Comment Here"></textarea>
+			<div>
+				<input class="comment-form-input" type="chars" name="name" placeholder="Name (optional)">
+				<input class="comment-form-input" type="chars" name="email" placeholder="Email (required)">
+				<input class="comment-form-submit" type="submit" name="submit">
+			</div>
+		</form>
+	</div>
+
+
+	{% for comment in comment_list %}
+	<div class="comment">
+		<div class="comment-header">{{ comment.name }} | {{ comment.created_on }}</div>
+		<div class="comment-content">{{ comment.content }}</div>
+	</div>
+	{% endfor %}
+
+</div>
+
 {% endblock content %}
