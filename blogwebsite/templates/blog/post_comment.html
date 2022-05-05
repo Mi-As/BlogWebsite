@@ -8,16 +8,29 @@
 <div class="comment-section">
 
 	<h3 id="comments">{{ comment_list.count }} Comment{% if not comment_list.count == 1 %}s{% endif %} </h3>
+	{% if form.subject.errors %}
+    <ol>
+    {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ol>
+	{% endif %}
 	<div class="comment-form">
 		<form action="" method="post">
 			{% csrf_token %}
+			{{ comment_form.as_ul }}
+			<input class="comment-form-submit" type="submit" name="submit">
+		</form>
+		<!--<form action="" method="post">
+			{% csrf_token %}
 			<textarea class="comment-form-content" rows="3" placeholder="Type Comment Here"></textarea>
 			<div>
+				<input type="hidden" name="parent_id" value="-1">
 				<input class="comment-form-input" type="chars" name="name" placeholder="Name (optional)">
 				<input class="comment-form-input" type="chars" name="email" placeholder="Email (required)">
 				<input class="comment-form-submit" type="submit" name="submit">
 			</div>
-		</form>
+		</form>-->
 	</div>
 
 

@@ -19,12 +19,17 @@ class PostView(View):
             context["post"] = post_data
             context["comment_list"] = \
                 Comment.objects.filter(post_slug=post_data.slug).values()
+            context["comment_form"] = CommentForm()
             return render(request,'blog/post_detail.html', context)
 
         return render(request,'page/404_page.html')
 
     def post(self, request, *args, **kwargs):
-        form = CommentForm(request.POST)
-        # if form.is_valid():
+        form = CommentForm(request.POST)     
+        # data=form.cleaned_data["name"]
+        # print(data)
+        if form.is_valid():
+            print("valid")
+            #Comment.objects.create()
         return redirect(f'/blog/{kwargs.get("slug")}#comments')
 
