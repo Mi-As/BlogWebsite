@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -105,6 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# For Deployment
+# python manage.py check --deploy
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+ALLOWED_HOSTS = ['mirastonishing.herokuapp.com', '54.228.42.199']
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
