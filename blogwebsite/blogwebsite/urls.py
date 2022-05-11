@@ -20,10 +20,11 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('', include('page.urls')),
-    path('', RedirectView.as_view(url='blog'), name='blog_redirect'),
+    path('', TemplateView.as_view(template_name="page/coming_soon.html"))
+    # path('admin/', admin.site.urls),
+    # path('blog/', include('blog.urls')),
+    # path('', include('page.urls')),
+    # path('', RedirectView.as_view(url='blog'), name='blog_redirect'),
 ]
 
 handler404 = TemplateView.as_view(template_name="page/404_page.html")
